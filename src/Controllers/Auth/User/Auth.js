@@ -72,16 +72,17 @@ exports.signIn = async (req, res) => {
         res.cookie('token', token, { expiresIn: '30d' })
         const { password, ...userCreds } = user._doc
         res.status(200).json({ token, user: userCreds })
-      } else
+      } else {
         return res.status(400).json({ message: 'Wrong username or password' })
+      }
     } catch (error) {
-      return res.status(500).json(error)
+      return res.status(500).json({ error, message: "Couldn't find user" })
     }
   })
 }
 
 exports.signOut = async (req, res) => {
-  const cookie = res.clearCookie('token')
+  res.clearCookie('token')
   res.status(200).json({
     message: 'You have signed out successfully'
   })

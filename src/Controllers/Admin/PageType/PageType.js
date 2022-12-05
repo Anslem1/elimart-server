@@ -5,13 +5,13 @@ exports.createPageType = (req, res) => {
 
   if (bannerImages.length > 0) {
     req.body.bannerImages = bannerImages.map((bannerImage, index) => ({
-      images: `${process.env.API}/public/${bannerImage.filename}`,
+      images: bannerImage.path,
       navigateTo: `/bannerImageClicked?categoryId=${req.body.category}&pagetype=${req.body.pagetype}`
     }))
   }
   if (productImages.length > 0) {
     req.body.productImages = productImages.map((productImage, index) => ({
-      images: `${process.env.API}/public/${productImage.filename}`,
+      images: productImage.path,
       navigateTo: `/productImageClicked?categoryId=${req.body.category}&pagetype=${req.body.pagetype}`
     }))
   }

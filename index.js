@@ -20,9 +20,7 @@ const app = express()
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+    useUnifiedTopology: true
   })
   .then(console.log('Mongo working?'))
   .catch(err => console.log({ err }))

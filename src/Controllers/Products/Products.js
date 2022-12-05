@@ -9,7 +9,6 @@ exports.createProduct = (req, res) => {
 
   if (req.files.length > 0) {
     productPictures = req.files.map(file => {
-   
       return { images: file.path }
     })
   }
@@ -48,7 +47,8 @@ exports.getProductsBySlug = (req, res) => {
                   under60k: 60000,
                   under80k: 80000,
                   under100k: 100000,
-                  under120k: 120000
+                  under120k: 120000,
+                  above120k: 120000
                 },
                 productsByPrice: {
                   under30k: products.filter(product => product.price <= 30000),
@@ -63,7 +63,8 @@ exports.getProductsBySlug = (req, res) => {
                   ),
                   under120k: products.filter(
                     product => product.price > 100000 && product.price <= 120000
-                  )
+                  ),
+                  above120k: products.filter(product => product.price > 120000)
                 }
               })
             }

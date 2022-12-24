@@ -4,7 +4,7 @@ const Category = require('../../Models/Category')
 
 exports.createProduct = (req, res) => {
   //   res.status(200).json({ file: req.files, body: req.body })
-  const { name, description, price, category, quantity, createdBy } = req.body
+  const { name, description, price, category, quantity } = req.body
   let productPictures = []
 
   if (req.files.length > 0) {
@@ -12,6 +12,8 @@ exports.createProduct = (req, res) => {
       return { images: file.path }
     })
   }
+
+ 
   const product = new Product({
     name,
     slug: slugify(name),

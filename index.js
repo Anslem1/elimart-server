@@ -1,7 +1,6 @@
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
-const path = require('path')
 const cors = require('cors')
 
 const adminRoutes = require('./src/Routes/Auth/Admin/admin.auth')
@@ -40,5 +39,5 @@ app
   .use('/api/admin/orders', adminOrderRoute)
 
 app.listen(process.env.PORT, () => {
-  console.log(`server running on port ${process.env.PORT}`)
+  console.log(`server running on port ${process.env.PORT}`) 
 })

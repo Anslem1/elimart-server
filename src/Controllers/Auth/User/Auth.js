@@ -60,7 +60,7 @@ exports.signIn = async (req, res) => {
   User.findOne({ email: req.body.email }).exec(async (error, user) => {
     try {
       const validated = await bcrypt.compare(req.body.password, user.password)
-      if (error) res.status(400).json({ error: 'Something went wrong' })
+      if (error) res.status(400).json({ error: 'Something went wrong', error })
       if (user && validated && user.role === 'user') {
         const token = jwt.sign(
           { _id: user._id, role: user.role },

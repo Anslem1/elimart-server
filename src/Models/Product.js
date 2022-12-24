@@ -38,6 +38,8 @@ const productSchema = new Schema(
       required: true
     },
     offers: { type: Number },
+
+    
     productPictures: [
       {
         images: {
@@ -53,7 +55,7 @@ const productSchema = new Schema(
     createdBy: {
       type: Schema.Types.ObjectId,
       ref: 'User',
-      required:true
+      required: true
       //   review: String
     },
     updatedBy: {

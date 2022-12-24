@@ -10,10 +10,9 @@ exports.signUp = async (req, res) => {
       const username = await User.findOne({
         username: req.body.username
       })
-      if (user || username)
+      if (user || username) {
         res.status(400).json({ message: 'Email or username already exists' })
-      if (error) res.status(400).json({ error })
-      else {
+      } else if (!user && !username) {
         const { firstName, lastName, email } = req.body
         const newUser = new User({
           firstName,
@@ -41,10 +40,13 @@ exports.signUp = async (req, res) => {
             res.status(200).json({
               token,
               user: userCreds,
-              message: 'User successfully create '
+              message: 'User successfully create'
             })
           }
         })
+      } else if (error) {
+        res.status(400).json({ error })
+        console.log({ error })
       }
     })
   } catch (error) {

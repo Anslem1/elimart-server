@@ -3,8 +3,6 @@ const UserAddress = require('../../Models/Address')
 exports.addAddress = (req, res) => {
   const { payload } = req.body
 
- 
-
   if (payload.address) {
     if (payload.address._id) {
       UserAddress.findOneAndUpdate(
